@@ -8,6 +8,15 @@
   /* ---------- Year ---------- */
   const y = $('#year'); if (y) y.textContent = new Date().getFullYear();
 
+  /* ---------- Logo → back to top ---------- */
+  $$('a[href="#top"]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    history.replaceState(null, '', location.pathname + location.search);
+    toggle?.setAttribute('aria-expanded', 'false');
+    mnav?.classList.remove('is-open');
+  }));
+
   /* ---------- Mobile nav ---------- */
   const toggle = $('.nav__toggle');
   const mnav = $('#mobile-nav');
